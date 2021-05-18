@@ -1,0 +1,9 @@
+#!/bin/bash
+
+ME=$(readlink -e $0)
+BASEDIR="$(dirname $ME)"
+LIBDIR="$(readlink -e "$BASEDIR/../lib")"
+export LD_LIBRARY_PATH="$LIBDIR":$LD_LIBRARY_PATH
+
+exec "./uic_exe" $@
+
