@@ -15,7 +15,7 @@ SCRIPT=$(readlink -e $2)
 SCRIPT_BASENAME=$(basename ${SCRIPT})
 
 cp ${SCRIPT} ${SRC_DIR}
-docker run -v ${SRC_DIR}:/${SRC_DIR_BASENAME} -w /${SRC_DIR_BASENAME} -u root -t yuzuemu/build-environments:linux-fresh /bin/bash /${SRC_DIR_BASENAME}/${SCRIPT_BASENAME} ${UID} ${GID}
+docker run -v ${SRC_DIR}:/${SRC_DIR_BASENAME} -w /${SRC_DIR_BASENAME} -u root -t yuzuemu/build-environments:linux-fresh /bin/bash -e /${SRC_DIR_BASENAME}/${SCRIPT_BASENAME} ${UID} ${GID}
 exit
 SRC_DIR=${SRC_DIR}/qtwebengine
 docker run -v ${SRC_DIR}:/${SRC_DIR_BASENAME} -w /${SRC_DIR_BASENAME} -u root -t yuzuemu/build-environments:linux-fresh /bin/bash /${SRC_DIR_BASENAME}/${SCRIPT_BASENAME} ${UID} ${GID}
