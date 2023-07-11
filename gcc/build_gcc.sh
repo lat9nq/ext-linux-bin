@@ -6,7 +6,7 @@ set -e
 THIS=$(readlink -e $0)
 USER_ID=`id -u`
 GROUP_ID=`id -g`
-VERSION=12.2.0
+VERSION=13.1.0
 
 if [ ! -d gcc ]; then
     git clone --depth 1 -b "releases/gcc-$VERSION" git://gcc.gnu.org/git/gcc.git
@@ -22,4 +22,4 @@ mkdir -p gcc-$VERSION | true
 docker run -v $(pwd):/src -w /src -u root -t yuzuemu/build-environments:linux-fresh /bin/bash /src/docker.sh $VERSION
 
 cp -v $THIS gcc-$VERSION/
-tar cv gcc-$VERSION | xz -T0 -c | split --bytes=90MB - gcc-$VERSION.tar.xz.
+tar cv gcc-$VERSION | xz -T0 -c | split --bytes=95MB - gcc-$VERSION.tar.xz.
